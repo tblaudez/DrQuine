@@ -25,8 +25,7 @@ Sully: Sully.c
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -f Colleen Grace Sully Grace_kid.c
-	find . -name "Sully_*.c" -delete
+	rm -f Colleen Grace Sully Grace_kid.c Sully_*
 
 re: clean all
 

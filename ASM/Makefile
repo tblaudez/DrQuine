@@ -11,28 +11,26 @@
 # **************************************************************************** #
 
 CC := clang
-CFLAGS := -Wall -Wextra -Werror -g3
+CFLAGS := -Wall -Wextra -Werror
+ASMC := nasm
+ASMFLAGS := -fmacho64
 
 all: Colleen Grace Sully
 
 Colleen: Colleen.o
 	$(CC) $(CFLAGS) $< -o $@
-	rm -f $<
 
 Grace: Grace.o
 	$(CC) $(CFLAGS) $< -o $@
-	rm -f $<
 
 Sully: Sully.o
 	$(CC) $(CFLAGS) $< -o $@
-	rm -f $<
 
 %.o: %.asm
-	nasm -f macho64 -g $< -o $@
+	$(ASMC) $(ASMFLAGS) $< -o $@
 
 clean:
-	rm -f Colleen Grace Sully Grace_kid.asm
-	find . -name "Sully_*.asm" -delete
+	rm -f Colleen Grace Sully Grace_kid.asm Sully_* *.o
 
 re: clean all
 
